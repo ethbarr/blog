@@ -1,0 +1,14 @@
+/home/ejb/sandbox/blog/BlogApi/bin/Debug/netcoreapp2.2/BlogApi.deps.json
+/home/ejb/sandbox/blog/BlogApi/bin/Debug/netcoreapp2.2/BlogApi.runtimeconfig.json
+/home/ejb/sandbox/blog/BlogApi/bin/Debug/netcoreapp2.2/BlogApi.runtimeconfig.dev.json
+/home/ejb/sandbox/blog/BlogApi/bin/Debug/netcoreapp2.2/BlogApi.dll
+/home/ejb/sandbox/blog/BlogApi/bin/Debug/netcoreapp2.2/BlogApi.pdb
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.csprojAssemblyReference.cache
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.csproj.CoreCompileInputs.cache
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.RazorAssemblyInfo.cache
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.RazorAssemblyInfo.cs
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.AssemblyInfoInputs.cache
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.AssemblyInfo.cs
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.RazorTargetAssemblyInfo.cache
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.dll
+/home/ejb/sandbox/blog/BlogApi/obj/Debug/netcoreapp2.2/BlogApi.pdb

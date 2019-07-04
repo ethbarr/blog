@@ -1,0 +1,79 @@
+version: '3.4'
+
+networks:
+  blogapi-dev:
+    driver: bridge
+
+services:
+  blogapi:
+    image: blogapi:latest
+    depends_on:
+      - "postgres_image"
+    build:
+      context: .
+      dockerfile: BlogApi/Dockerfile
+    expose:
+      - "8000"
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
+      ASPNETCORE_ENVIRONMENT: development
+      #REMOTE_DEBUGGING: ${REMOTE_DEBUGGING}
+    networks:
+      - blogapi-dev
+    tty: true
+    stdin_open: true
+
+  postgres_image:
+    image: postgres:latest
+    ports:
+      - "5000:80"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+      - ./BlogApi/dbscripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      POSTGRES_USER_FILE: /run/secrets/db_username
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_DB_FILE: /run/secrets/db_name
+    networks:
+      - blogapi-dev
+    secrets:
+      - db_username
+      - db_password
+      - db_name
+  
+  nginx-proxy:
+    image: nginx:latest
+    container_name: nginx-proxy
+    build:
+      context: .
+      dockerfile: nginx-proxy/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - blogapi-dev
+    depends_on:
+      - "blogapi"
+    volumes:
+      - ./nginx-proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx-proxy/error.log:/etc/nginx/error_log.log
+      - ./nginx-proxy/cache/:/etc/nginx/cache
+      - /etc/letsencrypt/:/etc/letsencrypt/
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./:/etc/nginx/
+
+networks:
+  blogapi-dev:
+    driver: bridge
+
+secrets:
+  db_username:
+    file: postgres_username.txt
+  db_password:
+    file: postgres_password.txt
+  db_name:
+    file: postgres_db_name.txt
+
+volumes:
+  db_volume:
