@@ -28,7 +28,7 @@ namespace BlogApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_FILE");
                     services.AddDbContext<BlogContext>(options =>
                     options.UseNpgsql(
                     connectionString));

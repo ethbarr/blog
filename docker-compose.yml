@@ -15,11 +15,13 @@ services:
     expose:
       - "8000"
     environment:
-      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
+      DB_CONNECTION_STRING_FILE: /run/secrets/connection_string
       ASPNETCORE_ENVIRONMENT: development
-      #REMOTE_DEBUGGING: ${REMOTE_DEBUGGING}
+      REMOTE_DEBUGGING: ${REMOTE_DEBUGGING}
     networks:
-      - blogapi-dev
+      - blogapi-net
+    secrets:
+      - connection_string
     tty: true
     stdin_open: true
 
@@ -36,7 +38,7 @@ services:
       POSTGRES_PASSWORD_FILE: /run/secrets/db_password
       POSTGRES_DB_FILE: /run/secrets/db_name
     networks:
-      - blogapi-dev
+      - blogapi-net
     secrets:
       - db_username
       - db_password
@@ -52,7 +54,7 @@ services:
       - 80:80
       - 443:443
     networks:
-      - blogapi-dev
+      - blogapi-net
     depends_on:
       - "blogapi"
     volumes:
@@ -64,7 +66,7 @@ services:
       - ./:/etc/nginx/
 
 networks:
-  blogapi-dev:
+  blogapi-net:
     driver: bridge
 
 secrets:
@@ -74,6 +76,8 @@ secrets:
     file: postgres_password.txt
   db_name:
     file: postgres_db_name.txt
+  connection_string:
+    file: conn_string.txt
 
 volumes:
   db_volume:

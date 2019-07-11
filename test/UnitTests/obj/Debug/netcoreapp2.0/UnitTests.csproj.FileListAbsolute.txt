@@ -1,0 +1,14 @@
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.csprojAssemblyReference.cache
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.csproj.CoreCompileInputs.cache
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.AssemblyInfoInputs.cache
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.AssemblyInfo.cs
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/xunit.runner.reporters.netcoreapp10.dll
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/xunit.runner.utility.netcoreapp10.dll
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/UnitTests.deps.json
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/UnitTests.runtimeconfig.json
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/UnitTests.runtimeconfig.dev.json
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/UnitTests.dll
+/home/ejb/sandbox/blog/test/UnitTests/bin/Debug/netcoreapp2.0/UnitTests.pdb
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.dll
+/home/ejb/sandbox/blog/test/UnitTests/obj/Debug/netcoreapp2.0/UnitTests.pdb
