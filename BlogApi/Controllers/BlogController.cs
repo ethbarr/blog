@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogApi.Models;
+using BlogApi.Services;
+using System;
 
 namespace BlogApi.Controllers
 {
@@ -11,31 +13,30 @@ namespace BlogApi.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private readonly BlogContext _context;
+        private readonly IBlogService _blogService;
 
-        public BlogController(BlogContext context)
+        public BlogController(IBlogService blogService)
         {
-            _context = context;
+            _blogService = blogService;
 
-            if (_context.BlogItems.Count() == 0)
+            if (_blogService.AllBlogs().Count() == 0)
             {
-                _context.BlogItems.Add(new BlogItem { Title = "First Post"});
-                _context.SaveChanges();
+                _blogService.AddBlog(new BlogItem { Title = "First Post" });
             }
         }
 
         // GET: api/Blog
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BlogItem>>> GetBlogItems()
+        public ActionResult<IEnumerable<BlogItem>> GetBlogItems()
         {
-            var blogs = await _context.BlogItems.ToListAsync();
+            var blogs = _blogService.AllBlogs();
             return blogs.ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<BlogItem>> GetBlogItem(long id)
+        public ActionResult<BlogItem> GetBlogItem(int id)
         {
-            var blogItem = await _context.BlogItems.FindAsync(id);
+            var blogItem = _blogService.FindBlog(id);
 
             if (blogItem == null)
             {
@@ -46,30 +47,27 @@ namespace BlogApi.Controllers
 
         // POST: api/Blog
         [HttpPost]
-        public async Task<ActionResult<BlogItem>> PostBlogItem(BlogItem item)
+        public ActionResult<BlogItem> PostBlogItem(BlogItem item)
         {
-            _context.BlogItems.Add(item);
-            await _context.SaveChangesAsync();
+            _blogService.AddBlog(item);
 
-            return CreatedAtAction(nameof(GetBlogItem), new BlogItem{ Id = item.Id }, item);
+            return CreatedAtAction(nameof(GetBlogItem), new BlogItem { Id = item.Id }, item);
         }
 
         // PUT: api/Blog/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBlogItem(long id, [FromBody]BlogItem item)
+        public IActionResult PutBlogItem(long id, [FromBody]BlogItem item)
         {
             if (id != item.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(item).State = EntityState.Modified;
-
             try
             {
-                 await _context.SaveChangesAsync();
+                _blogService.PutBlogItem(id, item);
             }
-            catch(DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException)
             {
                 return NotFound();
             }
@@ -79,16 +77,17 @@ namespace BlogApi.Controllers
 
         // DELETE: api/Blog/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBlogItem(long id)
+        public IActionResult DeleteBlogItem(long id)
         {
-            var blogItem = await _context.BlogItems.FindAsync(id);
-            if (blogItem == null)
+
+            try
+            {
+                _blogService.DeleteBlogItem(id);
+            }
+            catch 
             {
                 return NotFound();
             }
-
-            _context.BlogItems.Remove(blogItem);
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }

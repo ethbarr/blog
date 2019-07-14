@@ -15,7 +15,7 @@ services:
     expose:
       - "8000"
     environment:
-      DB_CONNECTION_STRING_FILE: /run/secrets/connection_string
+      DB_CONNECTION_STRING_FILE: "host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser"
       ASPNETCORE_ENVIRONMENT: development
       REMOTE_DEBUGGING: ${REMOTE_DEBUGGING}
     networks:

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using BlogApi.Models;
 using Microsoft.AspNetCore.HttpOverrides;
+using BlogApi.Services;
 
 namespace BlogApi
 {
@@ -29,16 +30,13 @@ namespace BlogApi
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING_FILE");
-                    services.AddDbContext<BlogContext>(options =>
-                    options.UseNpgsql(
-                    connectionString));
+            
+            services.AddDbContext<BlogContext>(options =>
+                        options.UseNpgsql(connectionString));
+
+            services.AddTransient<IBlogService, BlogService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            // services.Configure<ForwardedHeadersOptions>(options =>
-            // {
-            //     options.ForwardedHeaders =  ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
