@@ -4,6 +4,71 @@
     "/home/ejb/sandbox/blog/test/UnitTests/UnitTests.csproj": {}
   },
   "projects": {
+    "/home/ejb/sandbox/blog/BlogApi/BlogApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ejb/sandbox/blog/BlogApi/BlogApi.csproj",
+        "projectName": "BlogApi",
+        "projectPath": "/home/ejb/sandbox/blog/BlogApi/BlogApi.csproj",
+        "packagesPath": "/home/ejb/.nuget/packages/",
+        "outputPath": "/home/ejb/sandbox/blog/BlogApi/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/ejb/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[2.2.4, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
     "/home/ejb/sandbox/blog/test/UnitTests/UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -20,14 +85,18 @@
           "/home/ejb/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.0"
+          "netcoreapp2.2"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.0": {
-            "projectReferences": {}
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "/home/ejb/sandbox/blog/BlogApi/BlogApi.csproj": {
+                "projectPath": "/home/ejb/sandbox/blog/BlogApi/BlogApi.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -37,17 +106,37 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.0": {
+        "netcoreapp2.2": {
           "dependencies": {
+            "GenFu": {
+              "target": "Package",
+              "version": "[1.5.6, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.0.1, )"
+            },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.0.0, )",
+              "version": "[2.2.0, )",
               "autoReferenced": true
             },
             "Moq": {
               "target": "Package",
               "version": "[4.12.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[2.2.4, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

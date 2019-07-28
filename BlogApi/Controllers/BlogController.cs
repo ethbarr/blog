@@ -27,7 +27,7 @@ namespace BlogApi.Controllers
 
         // GET: api/Blog
         [HttpGet]
-        public ActionResult<IEnumerable<BlogItem>> GetBlogItems()
+        public IEnumerable<BlogItem> GetBlogItems()
         {
             var blogs = _blogService.AllBlogs();
             return blogs.ToList();
