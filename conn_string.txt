@@ -1,1 +1,0 @@
-host=postgres_image;port=5432;database=blogdb;username=bloguser;password=bloguser
