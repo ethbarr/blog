@@ -1,6 +1,5 @@
 using Xunit;
 using Moq;
-using Microsoft.EntityFrameworkCore;
 using BlogApi.Controllers;
 using BlogApi.Services;
 using System.Collections.Generic;
